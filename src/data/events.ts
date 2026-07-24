@@ -197,7 +197,7 @@ export const events: UFPEvent[] = [
         discipline: "boxing",
         divisionLabel: { es: "Boxeo", en: "Boxing" },
         time: "22:45",
-        poster: "/fights/pelea1.jpg",
+        poster: "/fights/linares-vs-arango.jpg",
         isTitleFight: false,
         red: { name: "Andrés Arango" },
         blue: { name: "Kevin Linares" },
