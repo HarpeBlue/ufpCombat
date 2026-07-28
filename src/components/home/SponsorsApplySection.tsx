@@ -3,10 +3,8 @@ import { isEnabled } from "@/data/features";
 import { sponsorBrands } from "@/data/sponsors";
 import { Section } from "@/components/ui/Section";
 import { CtaButton } from "@/components/ui/CtaButton";
+import { SponsorGrid } from "@/components/sponsor/SponsorGrid";
 import { ApplicationFormMini } from "@/components/forms/ApplicationFormMini";
-
-/** Real sponsor names to preview on the home page; the full grid lives on /patrocinadores. */
-const HOME_SPONSOR_COUNT = 6;
 
 /** Two-up block: sponsor pitch + fighter open call. Each half follows its feature flag. */
 export async function SponsorsApplySection() {
@@ -15,8 +13,6 @@ export async function SponsorsApplySection() {
   const showSponsors = isEnabled("sponsors");
   const showSignup = isEnabled("signup");
   if (!showSponsors && !showSignup) return null;
-
-  const brands = sponsorBrands.slice(0, HOME_SPONSOR_COUNT);
 
   return (
     <Section background="ink-2">
@@ -27,16 +23,7 @@ export async function SponsorsApplySection() {
               {t("sponsors.title")}
             </h2>
             <p className="text-[15px] leading-relaxed text-cream/65">{t("sponsors.pitch")}</p>
-            <div className="grid grid-cols-3 gap-3">
-              {brands.map((brand) => (
-                <div
-                  key={brand.name}
-                  className="flex h-[70px] items-center justify-center border border-cream/20 bg-surface px-2 text-center font-condensed text-xs uppercase leading-tight tracking-[.12em] text-cream/75"
-                >
-                  {brand.name}
-                </div>
-              ))}
-            </div>
+            <SponsorGrid brands={sponsorBrands} className="grid-cols-2 sm:grid-cols-3" />
             <CtaButton href="/patrocinadores" variant="outlineRed" className="self-start">
               {t("sponsors.kitCta")}
             </CtaButton>

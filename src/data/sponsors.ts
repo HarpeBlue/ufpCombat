@@ -17,6 +17,7 @@ export const sponsorBrands: SponsorBrand[] = [
   { name: "Grupo Colsolar", kind: "official" },
   { name: "Bloom X", kind: "official" },
   { name: "Voltios Burger", kind: "official" },
+  { name: "Hamburguesas Artesanal", kind: "official" },
   { name: "Aguardiente Antioqueño", kind: "official" },
   { name: "Imnova Print", kind: "official" },
   { name: "Somos", kind: "media" },

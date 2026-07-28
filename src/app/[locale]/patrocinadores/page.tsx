@@ -11,6 +11,7 @@ import { OutlineText } from "@/components/ui/OutlineText";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SponsorGrid } from "@/components/sponsor/SponsorGrid";
 import { SponsorForm } from "@/components/forms/SponsorForm";
 
 interface SponsorsPageProps {
@@ -98,16 +99,7 @@ export default async function SponsorsPage({ params }: SponsorsPageProps) {
 
         <Section width="md">
           <SectionHeading title={t("currentSponsors")} />
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-6">
-            {sponsorBrands.map((brand) => (
-              <div
-                key={brand.name}
-                className="flex h-[70px] items-center justify-center border border-cream/20 bg-surface px-2 text-center font-condensed text-xs uppercase leading-tight tracking-[.12em] text-cream/75"
-              >
-                {brand.name}
-              </div>
-            ))}
-          </div>
+          <SponsorGrid brands={sponsorBrands} className="grid-cols-2 sm:grid-cols-3 md:grid-cols-5" />
         </Section>
 
         <Section background="ink-2" width="md">
