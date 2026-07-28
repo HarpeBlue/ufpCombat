@@ -18,6 +18,7 @@ export const sponsorBrands: SponsorBrand[] = [
   { name: "Bloom X", kind: "official" },
   { name: "Voltios Burger", kind: "official" },
   { name: "Aguardiente Antioqueño", kind: "official" },
+  { name: "Imnova Print", kind: "official" },
   { name: "Somos", kind: "media" },
   { name: "Combatam", kind: "media" },
   { name: "Caray Combat Sports", kind: "media" },

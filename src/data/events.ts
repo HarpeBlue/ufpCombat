@@ -109,7 +109,7 @@ export const events: UFPEvent[] = [
     ],
     /**
      * UFP 6 full card, from the official run-of-show. `order` runs from the
-     * main event (0) down the bill; `time` is the scheduled start. Six bouts
+     * main event (0) down the bill; `time` is the scheduled start. Seven bouts
      * carry a promo `poster` (the home fight-card grid renders those). The
      * poster art uses ring names for some fighters (e.g. "El Zurdo", "Lobo");
      * the data here uses the official names from the schedule — same fighters.
@@ -179,16 +179,16 @@ export const events: UFPEvent[] = [
         blue: { name: "Alejandro Zuluaga" },
       },
       {
-        id: "ufp6-yepes-garzon",
+        id: "ufp6-garzon-yepes",
         order: 5,
         label: { es: "Preliminar", en: "Prelim" },
         discipline: "mma",
         divisionLabel: { es: "MMA · 63 kg", en: "MMA · 63 kg" },
         time: "00:30",
-        poster: "/fights/pelea5.jpg",
+        poster: "/fights/garzon-palma-vs-yepes.jpg",
         isTitleFight: false,
-        red: { name: "Jorge Yepes" },
-        blue: { name: "Garzón Palma" },
+        red: { name: "Garzón Palma" },
+        blue: { name: "Jorge Yepes" },
       },
       {
         id: "ufp6-arango-linares",
@@ -220,10 +220,23 @@ export const events: UFPEvent[] = [
         discipline: "mma",
         divisionLabel: { es: "MMA · 70 kg", en: "MMA · 70 kg" },
         time: "22:00",
-        poster: "/fights/pelea4.jpg",
+        poster: "/fights/el-zurdo-vs-ochoa.jpg",
         isTitleFight: false,
         red: { name: "Jhon Suárez" },
         blue: { name: "Gallego Ochoa" },
+      },
+      {
+        // Bout announced with its own poster but absent from the run-of-show.
+        // TODO(owner): confirm slot, weight and start time — all three are left
+        // out rather than guessed, so it lists last with no weight or time.
+        id: "ufp6-lozano-cardoso",
+        order: 9,
+        label: { es: "Preliminar", en: "Prelim" },
+        discipline: "mma",
+        poster: "/fights/lozano-vs-cardoso.jpg",
+        isTitleFight: false,
+        red: { name: "Lozano" },
+        blue: { name: "Cardoso" },
       },
     ],
     tickets: ufp6Tickets,

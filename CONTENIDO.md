@@ -11,10 +11,10 @@ Se encienden apenas tengan contenido real. Nada falso está publicado.
 
 - **UFP 6 "Champions"** · vie 7 ago 2026 · Monasterio Club, Granada (Meta).
 - **Cartelera completa** del cronograma: estelar **Leo Wi (campeón) vs Carlos Bravo** por
-  Título Nacional con su **poster oficial**, + 8 peleas con hora, peso y disciplina.
+  Título Nacional con su **poster oficial**, + 9 peleas con hora, peso y disciplina.
 - **Boletos reales**: 3 palcos + 2 mesas VIP + General ($30.000), en COP, compra por WhatsApp.
-- **Patrocinadores** del póster (+ Voltios Burger).
-- **Fotos**: poster oficial de la estelar, fotos individuales de Leo y Bravo, y los 6 posters
+- **Patrocinadores** del póster (+ Voltios Burger, + Imnova Print).
+- **Fotos**: poster oficial de la estelar, fotos individuales de Leo y Bravo, y los 7 posters
   promocionales de la cartelera.
 - **Timeline de shows** (MB, bailarinas, Zonder, Apocalipto & King Ryan, DJ, lucha de brazo).
 - **Formularios** (inscripción y patrocinio) llegan por correo (Resend) al Gmail del dueño.
@@ -28,6 +28,7 @@ Se encienden apenas tengan contenido real. Nada falso está publicado.
 | **Dirección exacta del Monasterio Club** | Solo dice "Granada, Meta". |
 | **Disciplina del co-estelar** (Ramírez vs Psicópata) | Asumida MMA — confirmar. |
 | **Peso de la estelar** | No se muestra (solo "Título Nacional"). |
+| **Lozano vs Cardoso** | Llegó con póster pero no está en el cronograma: falta puesto en la cartelera, peso y hora. Hoy va de última, como preliminar de MMA y sin peso ni hora. |
 | Opcional | Capacidad del lugar, asaltos por pelea, si hay transmisión. |
 
 ## 2. Secciones apagadas (encender cuando haya contenido real)
