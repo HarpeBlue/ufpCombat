@@ -21,6 +21,7 @@ export const sponsorBrands: SponsorBrand[] = [
     kind: "official",
   },
   { id: "imnova-print", name: "Imnova Print", kind: "official" },
+  { id: "alejo-suplementos", name: "Alejo Suplementos", kind: "official" },
 ];
 
 /** Shared commercial terms for all digital sponsorship packages. */
@@ -30,7 +31,7 @@ export const sponsorCampaign = { durationDays: 30, currency: "COP" } as const;
 export const sponsorTiers: SponsorTier[] = [
   {
     id: "presencia",
-    price: 200000,
+    price: 300000,
     name: {
       es: "Aliado digital",
       en: "Digital partner",
