@@ -211,8 +211,8 @@ export const events: UFPEvent[] = [
         blue: {
           name: "Sherman Andres Chivata",
         },
-        poster: "/fights/ufp-7/muneton-sherman.jpg",
-        posterAspectRatio: "1028 / 1300",
+        poster: "/fights/ufp-7/muneton-sherman-0f2c61d1.jpg",
+        posterAspectRatio: "911 / 1424",
       },
       {
         id: "ufp7-yandri-ximena",
