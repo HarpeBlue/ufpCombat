@@ -123,6 +123,8 @@ export const events: UFPEvent[] = [
         blue: {
           name: "Morroco",
         },
+        poster: "/fights/ufp-7/leo-wi-morroco.jpg",
+        posterAspectRatio: "1047 / 1240",
       },
       {
         id: "ufp7-psicopata-balboa",
@@ -182,11 +184,13 @@ export const events: UFPEvent[] = [
         },
         isTitleFight: false,
         red: {
-          name: "Pikachu",
+          name: "La Bala Palacios",
         },
         blue: {
-          name: "Stuart",
+          name: "La Mole",
         },
+        poster: "/fights/ufp-7/pikachu-stuart.jpg",
+        posterAspectRatio: "1024 / 970",
       },
       {
         id: "ufp7-muneton-sherman",
@@ -317,6 +321,8 @@ export const events: UFPEvent[] = [
         blue: {
           name: "Sebastián",
         },
+        poster: "/fights/ufp-7/zuluaga-sebastian.jpg",
+        posterAspectRatio: "920 / 900",
       },
       {
         id: "ufp7-chamo-nunez",

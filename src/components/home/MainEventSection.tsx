@@ -4,7 +4,7 @@ import type { Locale, UFPEvent } from "@/data/types";
 import { L } from "@/lib/localize";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { FightPoster } from "@/components/event/FightPoster";
 import { FightCardItem } from "@/components/event/FightCardItem";
 import { TaleOfTheTape } from "@/components/event/TaleOfTheTape";
 
@@ -33,12 +33,11 @@ export async function MainEventSection({ event }: MainEventSectionProps) {
       {mainFight.poster ? (
         // The official fight poster is the emblematic face of the event — a
         // single centered image with a red glow, bigger than any undercard card.
-        <div className="mx-auto w-full max-w-[600px]">
-          <PlaceholderImage
-            label={`${mainFight.red.name} vs ${mainFight.blue.name}`}
-            src={mainFight.poster}
-            alt={`${mainFight.red.name} vs ${mainFight.blue.name}`}
-            className="aspect-[914/1280] border border-blood/40 shadow-[0_0_90px_-10px_rgba(193,18,31,.5)]"
+        <div className="mx-auto w-full max-w-[600px] border border-blood/40 shadow-[0_0_90px_-10px_rgba(193,18,31,.5)]">
+          <FightPoster
+            fight={mainFight}
+            aspectRatio={mainFight.posterAspectRatio ?? "914 / 1280"}
+            sizes="(max-width: 768px) 100vw, 600px"
           />
         </div>
       ) : mainFight.red.photo ||

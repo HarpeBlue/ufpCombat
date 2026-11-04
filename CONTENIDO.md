@@ -11,7 +11,7 @@ Se encienden apenas tengan contenido real. Nada falso está publicado.
 
 - **UFP 7**: 5 de diciembre de 2026, 7:00 p. m., Gimnasio Jumper Fit, Cra. 10 #16-32, barrio Antonio Ricaurte, Granada, Meta.
 - **11 combates** según `cartelera.jpeg`, incluyendo Leo Wi vs. Morroco por título nacional y el encuentro MMA 2 vs. 2 de 66 kg.
-- **8 flyers asociados**: se muestran con el pie anterior recortado visualmente. Los archivos originales se conservan; la cartelera definitiva prevalece sobre nombres, sede y horarios de flyers anteriores.
+- **11 flyers asociados**: se muestran con el pie anterior recortado visualmente. Los archivos originales se conservan; la cartelera definitiva prevalece sobre pesos, sede y horarios. Los nombres de La Bala Palacios y La Mole siguen el flyer según confirmó el organizador.
 - **Boletas**: General $30.000, VIP $50.000 y Palco $100.000 COP. Sin capacidades ni beneficios adicionales confirmados.
 - **UFP 6** se conserva en `/evento/ufp-6`, sin venta activa ni resultados inventados.
 - **14 aliados** conservados, con vitrina propia y tres paquetes digitales con precios de lanzamiento. Ninguna marca tiene una categoría comercial asignada todavía.
@@ -20,8 +20,9 @@ Se encienden apenas tengan contenido real. Nada falso está publicado.
 ## 1. Pendientes de contenido
 
 - Logos, descripciones y destinos oficiales de cada patrocinador. No se buscan ni se inventan perfiles.
-- Flyer de la estelar y de los otros dos cruces sin pieza individual. Se presentan con texto.
-- “La Mole vs. La Bala Palacios” queda fuera: no aparece en la cartelera definitiva.
+- El organizador confirmó los alias: La Bala Palacios es Pikachu y La Mole es Stuart; el flyer se asocia al cruce existente.
+- Se usan los nombres de los flyers sin alias visibles: La Bala Palacios vs. La Mole. Los identificadores del cruce se conservan.
+- Los pesos siguen la cartelera definitiva: Zuluaga vs. Sebastián, 63 kg; la estelar no tiene peso indicado. Se recortan visualmente las bandas de peso de esos flyers para evitar contradicciones.
 - Opcionales: capacidad del recinto, asaltos, horarios individuales, transmisión y beneficios por zona. Hoy se omiten.
 - Resultados reales de UFP 6 y de futuras ediciones. El archivo puede publicarse sin resultados.
 
