@@ -14,7 +14,7 @@ Se encienden apenas tengan contenido real. Nada falso está publicado.
 - **11 flyers asociados**: se muestran con el pie anterior recortado visualmente. Los archivos originales se conservan; la cartelera definitiva prevalece sobre pesos, sede y horarios. Los nombres de La Bala Palacios y La Mole siguen el flyer según confirmó el organizador.
 - **Boletas**: General $30.000, VIP $50.000 y Palco $100.000 COP. Sin capacidades ni beneficios adicionales confirmados.
 - **UFP 6** se conserva en `/evento/ufp-6`, sin venta activa ni resultados inventados.
-- **14 aliados** conservados, con vitrina propia y tres paquetes digitales con precios de lanzamiento. Ninguna marca tiene una categoría comercial asignada todavía.
+- **11 aliados** conservados, con vitrina propia y tres paquetes digitales con precios de lanzamiento. Ninguna marca tiene una categoría comercial asignada todavía.
 - **Formularios**: continúan con la entrega por correo existente; el paquete de patrocinio se preselecciona desde su CTA.
 
 ## 1. Pendientes de contenido

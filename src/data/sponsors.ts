@@ -21,9 +21,6 @@ export const sponsorBrands: SponsorBrand[] = [
     kind: "official",
   },
   { id: "imnova-print", name: "Imnova Print", kind: "official" },
-  { id: "somos", name: "Somos", kind: "media" },
-  { id: "combatam", name: "Combatam", kind: "media" },
-  { id: "caray-combat-sports", name: "Caray Combat Sports", kind: "media" },
 ];
 
 /** Shared commercial terms for all digital sponsorship packages. */
