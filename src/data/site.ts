@@ -9,8 +9,8 @@ export const site = {
   /** Sales WhatsApp. wa.me format: country code + number, digits only. */
   whatsappNumber: "573219103153",
   /** Site author credit, shown discreetly in the footer. */
-  author: "Plenum",
-  authorUrl: "https://www.linkedin.com/in/plenum/",
+  author: "HarpeBlue",
+  authorUrl: "https://www.linkedin.com/in/harpeblue/",
 } as const;
 
 /**
