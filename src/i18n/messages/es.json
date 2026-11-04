@@ -22,7 +22,8 @@
     "tickets": "Boletos",
     "home": "Inicio",
     "openMenu": "Abrir menú",
-    "closeMenu": "Cerrar menú"
+    "closeMenu": "Cerrar menú",
+    "sponsors": "Patrocinios"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
@@ -57,7 +58,8 @@
       "title": "Boletos",
       "titleAccent": "/ Tickets",
       "buy": "Comprar por WhatsApp",
-      "buyMessage": "¡Hola! Quiero comprar boletos para {event} — zona {zone} ({price}). ¿Me ayudan?"
+      "buyMessage": "¡Hola! Quiero comprar boletos para {event} — zona {zone} ({price}). ¿Me ayudan?",
+      "officialCard": "Cartelera oficial de {event}"
     },
     "fighters": {
       "title": "Peleadores",
@@ -81,9 +83,9 @@
       "viewAllLink": "Ver toda la tienda →"
     },
     "sponsors": {
-      "title": "Patrocinadores",
-      "pitch": "Tu marca frente a miles en el evento y en redes. Paquetes desde branding en el ring hasta naming del evento. / Put your brand in the cage.",
-      "kitCta": "Kit de patrocinio"
+      "title": "Marcas que impulsan UFP",
+      "pitch": "Haz parte de la experiencia UFP. Dale a tu marca un lugar propio junto a la cartelera y un camino directo para que los seguidores conozcan tu negocio.",
+      "kitCta": "Conocer los espacios"
     },
     "apply": {
       "title": "¿Crees que",
@@ -111,7 +113,7 @@
   },
   "eventPage": {
     "daysRemaining": "Faltan {days} días",
-    "championship": "Campeonato mundial",
+    "championship": "Pelea por título",
     "finished": "Evento finalizado",
     "fullCard": "Cartelera completa",
     "fightsCount": "{count} peleas",
@@ -220,23 +222,51 @@
     "errorBody": "Revisa los campos marcados — el récord debe tener formato n-n-n y el email ser válido."
   },
   "sponsorsPage": {
-    "title": "Patrocina",
-    "titleAccent": "la pelea",
-    "kicker": "Partnerships UFP",
-    "pitch": "Cada evento UFP llena el lugar y se mueve fuerte en redes. Pon tu marca donde nadie parpadea.",
-    "tiersTitle": "Paquetes",
+    "title": "Tu marca.",
+    "titleAccent": "En primera fila.",
+    "kicker": "Alianzas UFP",
+    "pitch": "Haz parte de la experiencia UFP. Dale a tu marca un lugar propio junto a la cartelera y un camino directo para que los seguidores conozcan tu negocio.",
+    "tiersTitle": "Elige cómo estar presente",
     "perksLabel": "Incluye",
-    "currentSponsors": "Marcas que ya están en el octágono",
-    "formTitle": "Hablemos",
+    "currentSponsors": "Marcas que impulsan UFP",
+    "formTitle": "Elige tu paquete y hablemos",
     "company": "Empresa",
     "contactName": "Nombre de contacto",
     "email": "Email corporativo",
     "tier": "Paquete de interés",
     "message": "Mensaje (opcional)",
-    "submit": "Solicitar kit de patrocinio",
+    "submit": "Consultar contratación",
     "successTitle": "✓ Solicitud recibida",
-    "successBody": "Te enviaremos el kit de patrocinio y una propuesta a tu email.",
-    "errorBody": "Revisa los campos marcados."
+    "successBody": "Revisaremos tu solicitud y te contactaremos por email para coordinar la contratación y las fechas de campaña.",
+    "errorBody": "Revisa los campos marcados.",
+    "partnersKicker": "Aliados de la promotora",
+    "partnersBody": "Detrás de cada encuentro también hay marcas que apoyan el deporte. Conoce a quienes acompañan a UFP.",
+    "joinPartners": "Tu marca puede ser parte de esta historia.",
+    "explorePackages": "Conocer los espacios",
+    "partner": "Aliado UFP",
+    "mediaPartner": "Aliado de medios",
+    "visitBrand": "Conocer la marca",
+    "visitBrandNamed": "Conocer {brand} (abre en otra pestaña)",
+    "featuredPartner": "Marca destacada",
+    "presentedBy": "Presentado por",
+    "quoteNote": "Precios de lanzamiento · Campañas de {days} días",
+    "quoteLabel": "Tarifa de lanzamiento",
+    "digitalInventory": "Presencia digital · Espacios disponibles para contratar",
+    "requestProposal": "Solicitar este paquete",
+    "whatsappCta": "Hablemos por WhatsApp",
+    "whatsappMessage": "¡Hola! Me interesa contratar {tier} para {event}, por {price} COP durante {days} días en ufpcombat.com. ¿Me ayudan con la disponibilidad y las fechas?",
+    "physicalNote": "Estos precios cubren únicamente los espacios en ufpcombat.com. No incluyen publicaciones en redes sociales, lona, menciones en vivo, entradas, hospitalidad ni activaciones físicas; esos servicios se cotizan aparte.",
+    "formKicker": "Precios por campaña digital · Sin pago en línea",
+    "submitting": "Enviando…",
+    "discoverTitle": "Hazte visible",
+    "discoverBody": "Tu marca en los recorridos del sitio: inicio, cartelera del evento y directorio de aliados.",
+    "storyTitle": "Cuenta tu historia",
+    "storyBody": "Un espacio para tu identidad, tu propuesta y lo que hace especial a tu negocio, con contenido confirmado por tu marca.",
+    "connectTitle": "Abre la conversación",
+    "connectBody": "Cuando compartas tu destino oficial, los seguidores podrán pasar de descubrir tu marca a visitar tu sitio o perfil.",
+    "campaignPeriod": "COP / campaña de {days} días",
+    "campaignTerms": "Pago único por {days} días de presencia digital alrededor del evento. La fecha de inicio se acuerda al contratar; no hay renovación automática.",
+    "packageOption": "{tier} — {price} COP / {days} días"
   },
   "common": {
     "loading": "Cargando",

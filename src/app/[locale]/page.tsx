@@ -3,7 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getLatestPastEvent, getUpcomingEvent } from "@/data";
 import { isEnabled } from "@/data/features";
 import type { Locale } from "@/data/types";
-import { formatEventDate } from "@/lib/format";
+import { formatEventDate, formatEventName } from "@/lib/format";
 import { localizedAlternates } from "@/lib/seo";
 import { Ticker } from "@/components/layout/Ticker";
 import { Footer } from "@/components/layout/Footer";
@@ -17,7 +17,9 @@ import { RosterSection } from "@/components/home/RosterSection";
 import { RankingsTeaserSection } from "@/components/home/RankingsTeaserSection";
 import { ResultsSection } from "@/components/home/ResultsSection";
 import { ShopTeaserSection } from "@/components/home/ShopTeaserSection";
-import { SponsorsApplySection } from "@/components/home/SponsorsApplySection";
+import { SponsorsSection } from "@/components/sponsor/SponsorsSection";
+import { SponsorSpotlight } from "@/components/sponsor/SponsorSpotlight";
+import { ApplySection } from "@/components/home/ApplySection";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -32,11 +34,13 @@ interface HomePageProps {
  */
 export const revalidate = 3600;
 
-export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: HomePageProps): Promise<Metadata> {
   const { locale } = await params;
   const event = getUpcomingEvent();
   const title = event
-    ? `UFP ${event.number}: ${event.title} · ${formatEventDate(event.date, locale as Locale)}`
+    ? `${formatEventName(event)} · ${formatEventDate(event.date, locale as Locale)}`
     : undefined;
 
   return {
@@ -68,6 +72,10 @@ export default async function HomePage({ params }: HomePageProps) {
             <HeroSection event={upcomingEvent} />
             <MainEventSection event={upcomingEvent} />
             <FightCardSection event={upcomingEvent} />
+            <div className="mx-auto max-w-[1200px] px-6 md:px-12">
+              <SponsorSpotlight eventSlug={upcomingEvent.slug} />
+            </div>
+            <SponsorsSection eventSlug={upcomingEvent.slug} />
             <TicketsSection event={upcomingEvent} />
           </>
         ) : null}
@@ -84,7 +92,10 @@ export default async function HomePage({ params }: HomePageProps) {
         {isEnabled("rankings") ? <RankingsTeaserSection /> : null}
         {isEnabled("results") ? <ResultsSection /> : null}
         {isEnabled("shop") ? <ShopTeaserSection /> : null}
-        <SponsorsApplySection />
+        {!upcomingEvent ? (
+          <SponsorsSection eventSlug={latestPastEvent?.slug} />
+        ) : null}
+        <ApplySection />
       </main>
       <Footer />
     </>

@@ -20,23 +20,31 @@ export async function VenueBlock({ venue }: VenueBlockProps) {
       ? { label: t("capacity"), value: formatNumber(venue.capacity, locale) }
       : null,
     { label: t("doors"), value: venue.doorsOpen },
-    venue.broadcast ? { label: t("broadcast"), value: L(venue.broadcast, locale) } : null,
+    venue.broadcast
+      ? { label: t("broadcast"), value: L(venue.broadcast, locale) }
+      : null,
   ].filter((fact) => fact !== null);
 
   return (
-    <div className="grid items-center gap-12 lg:grid-cols-2">
-      <PlaceholderImage
-        label="mapa / foto de la arena"
-        variant="neutral"
-        src={venue.mapImage}
-        alt={venue.name}
-        className="h-[320px] border border-cream/15"
-      />
+    <div
+      className={`grid items-center gap-12 ${venue.mapImage ? "lg:grid-cols-2" : ""}`}
+    >
+      {venue.mapImage ? (
+        <PlaceholderImage
+          label="mapa / foto de la arena"
+          variant="neutral"
+          src={venue.mapImage}
+          alt={venue.name}
+          className="h-[320px] border border-cream/15"
+        />
+      ) : null}
       <div className="flex flex-col gap-4">
         <h2 className="font-display text-4xl uppercase text-cream md:text-[44px]">
           {venue.name}
         </h2>
-        <p className="text-[15px] leading-relaxed text-cream/65">{L(venue.address, locale)}</p>
+        <p className="text-[15px] leading-relaxed text-cream/65">
+          {L(venue.address, locale)}
+        </p>
         <div className="flex flex-col gap-2 font-mono text-xs text-cream/55">
           {facts.map(({ label, value }) => (
             <span key={label}>

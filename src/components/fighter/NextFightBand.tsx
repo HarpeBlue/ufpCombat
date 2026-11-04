@@ -2,7 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getNextFightFor } from "@/data";
 import type { Locale } from "@/data/types";
-import { formatEventDate } from "@/lib/format";
+import { formatEventName, formatEventDate } from "@/lib/format";
 
 interface NextFightBandProps {
   fighterSlug: string;
@@ -28,7 +28,7 @@ export async function NextFightBand({ fighterSlug }: NextFightBandProps) {
           {t("nextFight")}
         </span>
         <span className="font-display text-lg uppercase md:text-[26px]">
-          vs. {opponent.name} · UFP {event.number}: {event.title} ·{" "}
+          vs. {opponent.name} · {formatEventName(event)} ·{" "}
           {formatEventDate(event.date, locale)}
         </span>
         <span className="border-[1.5px] border-current px-6 py-2.5 font-condensed text-[15px] font-bold uppercase tracking-[.2em] transition-colors group-hover:bg-cream group-hover:text-blood-deep">

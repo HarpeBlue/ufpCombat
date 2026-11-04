@@ -8,6 +8,7 @@ import { OutlineText } from "@/components/ui/OutlineText";
 
 interface FightCardItemProps {
   fight: Fight;
+  anchor?: boolean;
 }
 
 function cornerRecordLine(resolved: ResolvedCorner, locale: Locale): string {
@@ -43,7 +44,10 @@ function CornerName({
 }
 
 /** Fight card on the event page; shows the result once the fight has happened. */
-export async function FightCardItem({ fight }: FightCardItemProps) {
+export async function FightCardItem({
+  fight,
+  anchor = true,
+}: FightCardItemProps) {
   const t = await getTranslations("eventPage");
   const tFight = await getTranslations("fight");
   const locale = (await getLocale()) as Locale;
@@ -68,7 +72,10 @@ export async function FightCardItem({ fight }: FightCardItemProps) {
     : null;
 
   return (
-    <div className="border border-cream/10 bg-surface transition-colors hover:border-blood">
+    <div
+      id={anchor ? fight.id : undefined}
+      className="scroll-mt-24 border border-cream/10 bg-surface transition-colors hover:border-blood"
+    >
       <div className="grid items-center gap-3 px-7 py-[22px] md:grid-cols-[1fr_auto_1fr] md:gap-6">
         <div className="flex flex-col gap-0.5 md:text-right">
           <CornerName resolved={red} align="right" />
@@ -83,7 +90,10 @@ export async function FightCardItem({ fight }: FightCardItemProps) {
           </span>
           <OutlineText className="text-[22px]">{tFight("vs")}</OutlineText>
           <span className="font-mono text-[11px] text-cream/65">
-            {[fight.time, fight.divisionLabel ? L(fight.divisionLabel, locale) : null]
+            {[
+              fight.time,
+              fight.divisionLabel ? L(fight.divisionLabel, locale) : null,
+            ]
               .filter(Boolean)
               .join(" · ")}
           </span>

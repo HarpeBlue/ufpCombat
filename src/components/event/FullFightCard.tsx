@@ -17,7 +17,9 @@ interface FullFightCardProps {
 export async function FullFightCard({ event }: FullFightCardProps) {
   const t = await getTranslations("eventPage");
 
-  const orderedFights = [...getPublishedFights(event)].sort((a, b) => a.order - b.order);
+  const orderedFights = [...getPublishedFights(event)].sort(
+    (a, b) => a.order - b.order,
+  );
 
   return (
     <Section id="cartelera" background="ink-2" width="md">
@@ -26,7 +28,9 @@ export async function FullFightCard({ event }: FullFightCardProps) {
         kicker={
           isEventUpcoming(event)
             ? t("fightsCount", { count: orderedFights.length })
-            : t("resultsKicker")
+            : getPublishedFights(event).some((fight) => fight.result)
+              ? t("resultsKicker")
+              : t("finished")
         }
       />
       <div className="flex flex-col gap-4">

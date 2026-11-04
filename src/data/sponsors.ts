@@ -1,70 +1,124 @@
 import type { SponsorBrand, SponsorTier } from "./types";
 
-/**
- * Official UFP 6 sponsors, read off the event poster.
- *
- * TODO(owner): two logos on the poster were not legible enough to transcribe
- * (an orange circular badge and the rightmost one carrying a phone number) —
- * send the names and they get added here. Logos themselves are still missing:
- * without `logo` the grid falls back to the brand name set in type.
- */
+/** Confirmed UFP partners. Official logos and destinations are pending owner confirmation. */
 export const sponsorBrands: SponsorBrand[] = [
-  { name: "Monasterio", kind: "venue" },
-  { name: "Sobre Ruedas", kind: "official" },
-  { name: "Passion Fruit", kind: "official" },
-  { name: "Kromasol", kind: "official" },
-  { name: "La Fonda del Arroz", kind: "official" },
-  { name: "Grupo Colsolar", kind: "official" },
-  { name: "Bloom X", kind: "official" },
-  { name: "Voltios Burger", kind: "official" },
-  { name: "Hamburguesas Artesanal", kind: "official" },
-  { name: "Aguardiente Antioqueño", kind: "official" },
-  { name: "Imnova Print", kind: "official" },
-  { name: "Somos", kind: "media" },
-  { name: "Combatam", kind: "media" },
-  { name: "Caray Combat Sports", kind: "media" },
+  { id: "monasterio", name: "Monasterio", kind: "venue" },
+  { id: "sobre-ruedas", name: "Sobre Ruedas", kind: "official" },
+  { id: "passion-fruit", name: "Passion Fruit", kind: "official" },
+  { id: "kromasol", name: "Kromasol", kind: "official" },
+  { id: "la-fonda-del-arroz", name: "La Fonda del Arroz", kind: "official" },
+  { id: "grupo-colsolar", name: "Grupo Colsolar", kind: "official" },
+  { id: "bloom-x", name: "Bloom X", kind: "official" },
+  { id: "voltios-burger", name: "Voltios Burger", kind: "official" },
+  {
+    id: "hamburguesas-artesanal",
+    name: "Hamburguesas Artesanal",
+    kind: "official",
+  },
+  {
+    id: "aguardiente-antioqueno",
+    name: "Aguardiente Antioqueño",
+    kind: "official",
+  },
+  { id: "imnova-print", name: "Imnova Print", kind: "official" },
+  { id: "somos", name: "Somos", kind: "media" },
+  { id: "combatam", name: "Combatam", kind: "media" },
+  { id: "caray-combat-sports", name: "Caray Combat Sports", kind: "media" },
 ];
 
-/** Sponsorship packages, from largest to smallest. */
+/** Shared commercial terms for all digital sponsorship packages. */
+export const sponsorCampaign = { durationDays: 30, currency: "COP" } as const;
+
+/** Fixed launch prices for digital inventory; assignments require an agreement. */
 export const sponsorTiers: SponsorTier[] = [
   {
-    id: "naming",
-    name: { es: "Naming del evento", en: "Event naming rights" },
+    id: "presencia",
+    price: 200000,
+    name: {
+      es: "Aliado digital",
+      en: "Digital partner",
+    },
     pitch: {
-      es: "Tu marca en el nombre del evento: 'UFP 7 presentado por…'. Presencia total en el evento, redes y campaña.",
-      en: "Your brand in the event name: 'UFP 7 presented by…'. Full presence across the event, social and campaign.",
+      es: "Tu marca aparece entre los aliados de UFP, con información de tu negocio y un botón para contactarte.",
+      en: "Your brand appears among UFP partners, with business information and a direct contact link.",
+    },
+    example: {
+      es: "Ejemplo: una hamburguesería muestra su logo, explica qué ofrece y recibe consultas por WhatsApp desde su tarjeta.",
+      en: "Example: a burger restaurant displays its logo, explains its offer and lets fans contact it on WhatsApp from its card.",
     },
     perks: [
-      { es: "Logo en el centro del octágono", en: "Logo at the center of the octagon" },
-      { es: "Menciones desde el escenario", en: "Mentions from the stage" },
-      { es: "Activaciones en el evento", en: "On-site activations" },
-      { es: "Suite VIP + hospitality", en: "VIP suite + hospitality" },
+      {
+        es: "Tarjeta en inicio, página del evento y directorio de aliados",
+        en: "Brand card on the home page, event page and partner directory",
+      },
+      {
+        es: "Logo y descripción breve de tu negocio",
+        en: "Logo and a short description of your business",
+      },
+      {
+        es: "Botón hacia tu WhatsApp, Instagram o sitio web oficial",
+        en: "Link to your official WhatsApp, Instagram or website",
+      },
     ],
   },
   {
-    id: "octagon",
-    name: { es: "Octágono / Ring", en: "Octagon / Ring" },
+    id: "destacada",
+    price: 450000,
+    name: {
+      es: "Marca destacada",
+      en: "Featured brand",
+    },
     pitch: {
-      es: "Branding en lona, esquinas y vallas. En cada repetición de KO, ahí está tu marca.",
-      en: "Canvas, corner and cage branding. Every KO replay carries your brand.",
+      es: "Además de tu tarjeta de aliado, tienes un bloque propio de mayor tamaño junto a la cartelera para presentar tu negocio.",
+      en: "Alongside your partner card, you get a larger dedicated block beside the fight card to introduce your business.",
+    },
+    example: {
+      es: "Ejemplo: tu gimnasio tiene un espacio propio junto a las peleas, con su propuesta y un enlace para pedir información.",
+      en: "Example: your gym gets a dedicated space beside the bouts, with its offer and a link for inquiries.",
     },
     perks: [
-      { es: "Logo en lona y esquinas", en: "Canvas and corner logos" },
-      { es: "Backdrop de entrevistas", en: "Interview backdrop" },
-      { es: "Boletos ringside", en: "Ringside tickets" },
+      {
+        es: "Todo lo incluido en Aliado digital",
+        en: "Everything in Digital partner",
+      },
+      {
+        es: "Bloque ampliado con el nombre, descripción y enlace de tu marca",
+        en: "Larger feature with your brand name, description and link",
+      },
+      {
+        es: "Ubicación junto a la cartelera, en inicio y página del evento",
+        en: "Placement beside the fight card on the home and event pages",
+      },
     ],
   },
   {
-    id: "official",
-    name: { es: "Patrocinador oficial", en: "Official sponsor" },
+    id: "presenta",
+    price: 900000,
+    name: {
+      es: "Presentador digital",
+      en: "Digital presenting partner",
+    },
     pitch: {
-      es: "Presencia en pantallas, sitio web, redes y materiales del evento.",
-      en: "Presence on screens, website, social media and event materials.",
+      es: "Tu marca acompaña el encabezado del evento en el sitio y ocupa la primera posición entre los patrocinadores.",
+      en: "Your brand accompanies the event heading on the website and takes priority among the sponsors.",
+    },
+    example: {
+      es: "Ejemplo de ubicación: «UFP 7 presentado por [Tu marca]» en el encabezado del sitio. La presentación se limita a la web.",
+      en: "Placement example: “UFP 7 presented by [Your brand]” beside the website event heading. Presenting rights cover the website only.",
     },
     perks: [
-      { es: "Logo en pantallas del evento", en: "Event screen logos" },
-      { es: "Presencia en ufpcombat.com", en: "Presence on ufpcombat.com" },
-      { es: "Contenido en redes UFP", en: "UFP social media content" },
+      {
+        es: "Todo lo incluido en Marca destacada",
+        en: "Everything in Featured brand",
+      },
+      {
+        es: "Identificación «Presentado por» junto al encabezado del evento en inicio y página del evento",
+        en: "“Presented by” identification beside the event heading on the home and event pages",
+      },
+      {
+        es: "Primera posición en la vitrina de patrocinadores",
+        en: "Priority position in the sponsor showcase",
+      },
     ],
   },
 ];

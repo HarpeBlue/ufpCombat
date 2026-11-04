@@ -38,8 +38,9 @@ worth knowing before touching this:
 - `resolveCorner()` in `data/index.ts` drops a corner's slug when the roster is
   off. It is the single place that decides whether a fight card links to a
   profile — without it every link would 404.
-- `getBrowsableEvents()` hides past events when results are off, and both the
-  route and the sitemap read through it.
+- Event publication is independent of results: `published: true` keeps real
+  event URLs available after the event. Unpublished examples stay hidden from
+  all public selectors, routes and the sitemap.
 
 Currently off: shop, roster, rankings, results. On: sponsors, signup.
 
@@ -48,7 +49,7 @@ Currently off: shop, roster, rankings, results. On: sponsors, signup.
 - **DRY**: anything repeated gets abstracted into a shared component or utility.
 - **Descriptive names** and clean code.
 - **Data-scalable**: adding an event or a fighter means adding an object to `src/data/*.ts` — never duplicating markup.
-- **Nothing fake ships**: if the real content is not there, the section gets switched off rather than filled with plausible-looking invented data. Everything on the UFP 6 card is now real (fights confirmed as drafts flip off, tickets, prices, sponsors); the remaining placeholders live only in flagged-off-able sections and are inventoried in `CONTENIDO.md`.
+- **Nothing fake ships**: if the real content is not there, the section gets switched off rather than filled with plausible-looking invented data. UFP 7 is the current confirmed card; UFP 6 is a published archive. Event-level `published` and bout-level `draft` control publication; the remaining placeholders live only in flagged-off-able sections and are inventoried in `CONTENIDO.md`.
 
 ## Git conventions
 
@@ -69,9 +70,9 @@ Currently off: shop, roster, rankings, results. On: sponsors, signup.
 
 ## Regional settings
 
-The promotion is based in **Colombia**: prices in **COP**, dates and numbers formatted with `es-CO`, event times in `America/Bogota`. The upcoming event is **UFP 6** (7 Aug 2026) at Movistar Arena, Bogotá.
+The promotion is based in **Colombia**: prices in **COP**, dates and numbers formatted with `es-CO`, event times in `America/Bogota`. The upcoming event is **UFP 7** (5 Dec 2026, 19:00) at Gimnasio Jumper Fit, Granada, Meta. UFP 6 remains available at `/evento/ufp-6`.
 
-Ticket CTAs open WhatsApp with a per-zone prefilled message, built from `site.whatsappNumber` (`573219103153`, the real sales line) in `src/data/site.ts`. Ticket zones and prices are the real UFP 6 ones: three ringside boxes (Palco 6/4/1) plus two VIP tables (Oro/Plata), priced per box/table.
+Ticket CTAs open WhatsApp with a per-zone prefilled message, built from `site.whatsappNumber` (`573219103153`, the real sales line) in `src/data/site.ts`. UFP 7 ticket prices are General COP 30,000, VIP COP 50,000 and Palco COP 100,000. No capacity or additional perks have been confirmed for these tiers.
 
 ## Accessibility
 

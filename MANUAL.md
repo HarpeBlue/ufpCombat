@@ -18,7 +18,7 @@ Todos los archivos de datos tienen tipos estrictos: si te falta un campo o te eq
 | Paquetes de patrocinio                            | `src/data/sponsors.ts`                     |
 | Email de contacto, mensajes del ticker, copyright | `src/data/site.ts`                         |
 | Textos fijos de la interfaz (botones, títulos)    | `src/i18n/messages/es.json` y `en.json`    |
-| Cifras de alcance para patrocinadores             | `src/app/[locale]/patrocinadores/page.tsx` |
+| Marcas, destinos y ubicaciones comerciales        | `src/data/sponsors.ts`                     |
 
 **Idiomas**: todo texto de contenido traducible es un objeto `{ es: "...", en: "..." }`. Los nombres de marca (títulos de evento como "Sangre Nueva", apodos) van como string simple y **no se traducen**.
 
@@ -34,18 +34,23 @@ Agrega un objeto al inicio del array en `src/data/events.ts`:
 {
   slug: "ufp-18",                          // define la URL: /evento/ufp-18
   number: 18,
+  published: true,                        // false mantiene el evento fuera del sitio
   title: "Nombre Del Evento",              // marca, no se traduce
   status: "upcoming",
-  date: "2026-11-21T20:00:00-06:00",       // fecha/hora real CON zona horaria — mueve el countdown
+  date: "2026-11-21T20:00:00-05:00",       // fecha/hora real CON zona horaria — mueve el countdown
   venue: { name: "...", address: {es, en}, capacity: 20500, doorsOpen: "17:00", broadcast: {es, en} },
   schedule: [ { time: "17:00", label: {es: "Puertas", en: "Doors"} }, ... ],
   fights: [ ...ver abajo... ],
   tickets: [
-    { id: "general", zone: "General", price: 450, currency: "MXN", perks: {es, en} },
+    { id: "general", zone: "General", price: 30000, currency: "COP", perks: {es, en} },
     // featured: true destaca la zona; soldOut: true la marca agotada
   ],
 }
 ```
+
+El título es opcional: omítelo si el evento solo se llama “UFP 7”. El nombre público se arma con `formatEventName()`. Los eventos `published: true` conservan su URL al pasar a históricos, independientemente de la bandera de resultados. Los ejemplos permanecen con `published: false`.
+
+Para flyers con pie desactualizado, `posterAspectRatio` define la porción superior visible (por ejemplo, `"1024 / 1180"`). El original se conserva. Los cruces sin `poster` aparecen como tarjetas de texto.
 
 Cada pelea (`fights`) tiene dos esquinas `red` y `blue`:
 
@@ -54,7 +59,7 @@ Cada pelea (`fights`) tiene dos esquinas `red` y `blue`:
 
 `order: 0` es la pelea estelar (alimenta el hero de la home y el tale of the tape).
 
-**Con solo agregar ese objeto**: la home apunta su countdown y cartelera al nuevo evento, se crea `/evento/ufp-18` en ambos idiomas, entra al sitemap y se genera su imagen para redes sociales. No hay que tocar nada más — salvo el **ticker** en `src/data/site.ts`, que menciona el evento por nombre y se actualiza a mano.
+**Con solo agregar ese objeto**: la home apunta su countdown y cartelera al nuevo evento, se crea `/evento/ufp-18` en ambos idiomas, entra al sitemap y se genera su imagen para redes sociales. El **ticker** también deriva el anuncio del próximo evento automáticamente. `src/data/site.ts` contiene únicamente las frases generales.
 
 ### Cerrar un evento cuando ya pasó
 
@@ -70,7 +75,7 @@ result: {
 },
 ```
 
-La página del evento se convierte sola en archivo de resultados (adiós countdown y boletos), y el evento aparece en la sección "Resultados" de la home.
+La fecha real también archiva automáticamente el evento (sin countdown ni compra de boletos). Su URL sigue disponible con `published: true`. Agrega resultados solo cuando estén confirmados; la sección "Resultados" de inicio continúa oculta mientras `results` sea `false`.
 
 ### Después de cada evento, además:
 
@@ -100,7 +105,7 @@ Agregar un peleador = un objeto en `src/data/fighters.ts`. Campos clave:
 
 ## 4. Imágenes reales (fotos, logos, mapas)
 
-Hoy todo muestra placeholders rayados. El sistema está diseñado para que el cambio sea **solo agregar la ruta del archivo**, sin tocar ningún layout:
+Los flyers confirmados ya están publicados. Donde falten piezas individuales se usan tarjetas de texto; los modelos de peleadores y tienda conservan sus placeholders dentro de secciones apagadas. Para agregar imágenes reales:
 
 1. Coloca el archivo en `public/`, organizado, ej.: `public/fighters/marco-rios-full.jpg`, `public/products/playera-ufp-17.jpg`.
 2. Referéncialo en el dato correspondiente (la ruta es desde `public/`, empezando con `/`):
@@ -114,17 +119,16 @@ Recomendación: JPG/WebP ≤ 300 KB por foto; las fotos de peleador lucen mejor 
 ## 5. Tienda y patrocinadores
 
 - **Productos** (`products.ts`): `category` es `"apparel" | "accessories" | "collectible"` (alimenta el filtro). La home muestra los primeros 4 del array. El carrito es real (persiste en el navegador) pero el checkout dice "próximamente" — cobrar de verdad requiere integrar Stripe/MercadoPago después.
-- **Patrocinadores** (`sponsors.ts`): tiers con pitch y beneficios. Las cifras de alcance (asistencia, PPV, redes) están hardcodeadas en `src/app/[locale]/patrocinadores/page.tsx` — **pon las reales antes de mandar el link a un patrocinador**.
+- **Patrocinadores** (`sponsors.ts`): 14 marcas y tres paquetes digitales: Aliado digital (`presencia`, $200.000 COP), Marca destacada (`destacada`, $450.000 COP) y Presentador digital (`presenta`, $900.000 COP). Son pagos únicos por campañas de 30 días, con fecha de inicio acordada y sin renovación automática. Los valores y duración viven en `sponsors.ts`; no incluyen redes ni activaciones físicas. Completa `logo`, `description: {es, en}` y `url` (destino HTTPS oficial confirmado) cuando tengas esos datos. Sin URL, la ficha no es un enlace.
+- Asigna `tierId` **solo tras acordar el espacio comercial**. `destacada` habilita la ficha editorial junto a la cartelera; `presenta` también habilita la identificación en el encabezado. Sin `tierId`, las marcas tienen igual tratamiento. `eventSlugs` restringe una marca a ediciones concretas; omítelo para aliados generales de UFP.
+- Las propuestas abren `/patrocinadores?paquete=destacada#contacto` (o el identificador correspondiente), con el formulario preseleccionado. También hay contacto por WhatsApp. Las activaciones físicas se cotizan por separado.
+- No hay sistema de medición ni reportes de rendimiento en esta entrega.
 
 ## 6. Formularios (inscripción y patrocinio)
 
-Los envíos hoy **quedan registrados en el log del servidor**. Para verlos, en la VPS:
+Los formularios validan con zod y usan `src/lib/email.ts` para registrar y enviar las solicitudes por Resend. La configuración vive en variables de entorno (ver `.env.example`); sin configurar el correo, el comportamiento local es solo registro. No hay que guardar direcciones personales ni credenciales en el repositorio.
 
-```bash
-cd ~/ufpcombat && docker compose logs web | grep -A2 "application\|sponsor"
-```
-
-Es funcional pero incómodo — el siguiente paso natural es conectar un servicio de email en `src/actions/apply.ts` y `src/actions/sponsor.ts` (ahí está marcado el punto exacto; con Resend son ~10 líneas). La validación (récord con formato `18-2-0`, email, campos obligatorios) ya está hecha.
+El formulario de patrocinio acepta únicamente los tres paquetes publicados y envía su nombre junto al evento próximo. La entrega por correo es de mejor esfuerzo: un fallo del proveedor no bloquea una solicitud válida. Para revisar la entrega en producción, consulta los logs del servicio web y la configuración de Resend según `DEPLOY.md`.
 
 ## 7. Publicar
 

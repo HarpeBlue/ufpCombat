@@ -21,10 +21,10 @@ export const features = {
   /** OFF: rankings run over the placeholder roster. */
   rankings: false,
 
-  /** OFF: the three past events and their results are invented. */
+  /** OFF: no confirmed results yet. Published event archives remain accessible. */
   results: false,
 
-  /** Real — sponsors taken from the UFP 6 poster. */
+  /** Real — confirmed promotion partners; logos and destinations are pending. */
   sponsors: true,
 
   /** Real — the open call works, the form validates and submissions are emailed. */

@@ -5,6 +5,7 @@ import { L } from "@/lib/localize";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { FightCardItem } from "@/components/event/FightCardItem";
 import { TaleOfTheTape } from "@/components/event/TaleOfTheTape";
 
 interface MainEventSectionProps {
@@ -40,8 +41,13 @@ export async function MainEventSection({ event }: MainEventSectionProps) {
             className="aspect-[914/1280] border border-blood/40 shadow-[0_0_90px_-10px_rgba(193,18,31,.5)]"
           />
         </div>
-      ) : (
+      ) : mainFight.red.photo ||
+        mainFight.blue.photo ||
+        mainFight.red.slug ||
+        mainFight.blue.slug ? (
         <TaleOfTheTape fight={mainFight} />
+      ) : (
+        <FightCardItem fight={mainFight} anchor={false} />
       )}
     </Section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { LanguageToggle } from "./LanguageToggle";
@@ -13,9 +13,16 @@ interface NavMobileProps {
 }
 
 /** Hamburger menu for screens below lg. */
-export function NavMobile({ links, ticketsLabel, openLabel, closeLabel }: NavMobileProps) {
+export function NavMobile({
+  links,
+  ticketsLabel,
+  openLabel,
+  closeLabel,
+}: NavMobileProps) {
   const [isOpen, setIsOpen] = useState(false);
   const panelId = useId();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   /* While the overlay is open: Escape closes it and the body can't scroll behind it. */
   useEffect(() => {
@@ -23,7 +30,23 @@ export function NavMobile({ links, ticketsLabel, openLabel, closeLabel }: NavMob
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsOpen(false);
+      if (event.key !== "Tab") return;
+      const controls = panelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex="0"]',
+      );
+      if (!controls?.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
+    panelRef.current?.querySelector<HTMLElement>("button, a[href]")?.focus();
+    const trigger = triggerRef.current;
     document.addEventListener("keydown", closeOnEscape);
 
     const { body } = document;
@@ -33,12 +56,14 @@ export function NavMobile({ links, ticketsLabel, openLabel, closeLabel }: NavMob
     return () => {
       document.removeEventListener("keydown", closeOnEscape);
       body.style.overflow = previousOverflow;
+      trigger?.focus();
     };
   }, [isOpen]);
 
   return (
     <div className="ml-auto lg:hidden">
       <button
+        ref={triggerRef}
         type="button"
         aria-label={isOpen ? closeLabel : openLabel}
         aria-expanded={isOpen}
@@ -49,7 +74,9 @@ export function NavMobile({ links, ticketsLabel, openLabel, closeLabel }: NavMob
         <span
           className={`h-px w-6 bg-cream transition-transform ${isOpen ? "translate-y-[6px] rotate-45" : ""}`}
         />
-        <span className={`h-px w-6 bg-blood transition-opacity ${isOpen ? "opacity-0" : ""}`} />
+        <span
+          className={`h-px w-6 bg-blood transition-opacity ${isOpen ? "opacity-0" : ""}`}
+        />
         <span
           className={`h-px w-6 bg-cream transition-transform ${isOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
         />
@@ -58,8 +85,22 @@ export function NavMobile({ links, ticketsLabel, openLabel, closeLabel }: NavMob
       {isOpen && (
         <div
           id={panelId}
+          ref={panelRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={openLabel}
+          onClick={(event) => {
+            if ((event.target as HTMLElement).closest("a")) setIsOpen(false);
+          }}
           className="fixed inset-x-0 top-16 z-100 flex flex-col gap-1 border-b border-blood/35 bg-ink/97 px-7 py-6 backdrop-blur-[12px]"
         >
+          <button
+            type="button"
+            onClick={() => setIsOpen(false)}
+            className="self-end px-2 py-2 font-condensed uppercase tracking-wider text-cream"
+          >
+            {closeLabel} ×
+          </button>
           {links.map(({ href, label }) => (
             <Link
               key={href}

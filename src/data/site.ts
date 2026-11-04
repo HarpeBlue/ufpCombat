@@ -20,9 +20,8 @@ export const site = {
  * the event itself.
  */
 export const tickerPhrases: string[] = [
-  "Boletos a la venta / Tickets on sale now",
   "Peleas en vivo · Boxeo y MMA / Live boxing & MMA",
-  "Música en vivo · Corridos bélicos · DJ",
+  "Disciplina · Fuerza · Respeto",
 ];
 
 /** Copyright line — the year is computed, never hardcoded. */

@@ -1,7 +1,8 @@
+import { SponsorSpotlight } from "@/components/sponsor/SponsorSpotlight";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getMainFight, isEventUpcoming, resolveCorner } from "@/data";
 import type { Locale, UFPEvent } from "@/data/types";
-import { formatEventDate } from "@/lib/format";
+import { formatEventDate, formatEventTime } from "@/lib/format";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Reveal } from "@/components/ui/Reveal";
@@ -34,30 +35,37 @@ export async function EventHero({ event }: EventHeroProps) {
 
       <Reveal
         onScroll={false}
-        className="relative mx-auto grid w-full max-w-[1200px] items-center gap-8 px-6 py-[70px] md:px-12 lg:grid-cols-[1fr_1.2fr_1fr]"
+        className={`relative mx-auto grid w-full max-w-[1200px] items-center gap-8 px-6 py-[70px] md:px-12 ${red?.corner.photo && blue?.corner.photo ? "lg:grid-cols-[1fr_1.2fr_1fr]" : ""}`}
       >
-        <PlaceholderImage
-          label={`${red?.fighter?.lastName ?? "esquina roja"} — pose frente a frente`}
-          src={red?.corner.photo ?? red?.fighter?.photoFull}
-          alt={red?.corner.name}
-          variant="red"
-          imageClassName="object-top"
-          className="hidden h-[440px] -rotate-[1.5deg] border border-blood/35 lg:flex"
-        />
+        {red?.corner.photo || red?.fighter?.photoFull ? (
+          <PlaceholderImage
+            label={`${red?.fighter?.lastName ?? "esquina roja"} — pose frente a frente`}
+            src={red?.corner.photo ?? red?.fighter?.photoFull}
+            alt={red?.corner.name}
+            variant="red"
+            imageClassName="object-top"
+            className="hidden h-[440px] -rotate-[1.5deg] border border-blood/35 lg:flex"
+          />
+        ) : null}
 
         <div className="flex flex-col items-center gap-3.5 text-center">
           <span className="font-condensed text-sm uppercase tracking-[.34em] text-blood-hover">
-            {formatEventDate(event.date, locale)} · {event.venue.name}
+            {formatEventDate(event.date, locale)} ·{" "}
+            {formatEventTime(event.date)} · {event.venue.name}
           </span>
+          <SponsorSpotlight eventSlug={event.slug} presentation />
           <h1 className="font-display text-[min(14vw,110px)] uppercase leading-[.92]">
             <span className="block text-cream">UFP {event.number}</span>
-            <span className="block text-blood [text-shadow:0_0_60px_rgba(193,18,31,.5)]">
-              {event.title}
-            </span>
+            {event.title ? (
+              <span className="block text-blood [text-shadow:0_0_60px_rgba(193,18,31,.5)]">
+                {event.title}
+              </span>
+            ) : null}
           </h1>
           {redName && blueName ? (
             <div className="font-display text-[22px] uppercase leading-tight text-cream/85">
-              {redName} <span className="text-blood">{tFight("vs")}</span> {blueName}
+              {redName} <span className="text-blood">{tFight("vs")}</span>{" "}
+              {blueName}
             </div>
           ) : null}
           <span className="font-mono text-xs text-cream/60">
@@ -75,14 +83,16 @@ export async function EventHero({ event }: EventHeroProps) {
           ) : null}
         </div>
 
-        <PlaceholderImage
-          label={`${blue?.fighter?.lastName ?? "esquina azul"} — pose frente a frente`}
-          src={blue?.corner.photo ?? blue?.fighter?.photoFull}
-          alt={blue?.corner.name}
-          variant="blue"
-          imageClassName="object-top"
-          className="hidden h-[440px] rotate-[1.5deg] border border-cream/20 lg:flex"
-        />
+        {blue?.corner.photo || blue?.fighter?.photoFull ? (
+          <PlaceholderImage
+            label={`${blue?.fighter?.lastName ?? "esquina azul"} — pose frente a frente`}
+            src={blue?.corner.photo ?? blue?.fighter?.photoFull}
+            alt={blue?.corner.name}
+            variant="blue"
+            imageClassName="object-top"
+            className="hidden h-[440px] rotate-[1.5deg] border border-cream/20 lg:flex"
+          />
+        ) : null}
       </Reveal>
     </section>
   );

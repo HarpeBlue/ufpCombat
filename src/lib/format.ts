@@ -5,7 +5,7 @@ import type { FighterRecord, Locale, UFPEvent } from "@/data/types";
  * localized; kept here so page titles, metadata and CTAs can't drift apart.
  */
 export function formatEventName(event: UFPEvent): string {
-  return `UFP ${event.number}: ${event.title}`;
+  return [`UFP ${event.number}`, event.title].filter(Boolean).join(": ");
 }
 
 /** "18-2-0" */

@@ -1,3 +1,4 @@
+import { sponsorTiers } from "@/data/sponsors";
 import { z } from "zod";
 
 /** Fight record in n-n-n format, e.g. "5-1-0". */
@@ -24,6 +25,6 @@ export const sponsorContactSchema = z.object({
   company: z.string().trim().min(2).max(160),
   contactName: z.string().trim().min(2).max(120),
   email: z.email().trim(),
-  tierId: z.string().trim().min(1),
+  tierId: z.enum(sponsorTiers.map((tier) => tier.id)),
   message: z.string().trim().max(2000).optional().or(z.literal("")),
 });

@@ -1,5 +1,8 @@
 "use server";
 
+import { sponsorCampaign, sponsorTiers } from "@/data/sponsors";
+import { getUpcomingEvent } from "@/data";
+import { formatEventName, formatPrice } from "@/lib/format";
 import { sponsorContactSchema } from "@/lib/schemas";
 import { notifySubmission } from "@/lib/email";
 import type { FormActionState } from "./apply";
@@ -21,6 +24,8 @@ export async function submitSponsorContact(
     return { status: "error" };
   }
 
+  const event = getUpcomingEvent();
+  const tier = sponsorTiers.find((item) => item.id === parsed.data.tierId)!;
   await notifySubmission({
     subject: `Solicitud de patrocinio — ${parsed.data.company}`,
     replyTo: parsed.data.email,
@@ -28,7 +33,10 @@ export async function submitSponsorContact(
       Empresa: parsed.data.company,
       Contacto: parsed.data.contactName,
       Email: parsed.data.email,
-      Paquete: parsed.data.tierId,
+      Paquete: tier.name.es,
+      Precio: `${formatPrice(tier.price, "es")} ${sponsorCampaign.currency}`,
+      Duración: `${sponsorCampaign.durationDays} días`,
+      Evento: event ? formatEventName(event) : "UFP",
       Mensaje: parsed.data.message,
     },
   });

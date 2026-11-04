@@ -7,29 +7,23 @@ Se encienden apenas tengan contenido real. Nada falso está publicado.
 
 ---
 
-## Ya está listo (real y en vivo)
+## Actualización UFP 7 (preparada en el repositorio)
 
-- **UFP 6 "Champions"** · vie 7 ago 2026 · Monasterio Club, Granada (Meta).
-- **Cartelera completa** del cronograma: estelar **Leo Wi (campeón) vs Carlos Bravo** por
-  Título Nacional con su **poster oficial**, + 9 peleas con hora, peso y disciplina.
-- **Boletos reales**: 3 palcos + 2 mesas VIP + General ($30.000), en COP, compra por WhatsApp.
-- **Patrocinadores** del póster (+ Voltios Burger, + Imnova Print).
-- **Fotos**: poster oficial de la estelar, fotos individuales de Leo y Bravo, y los 7 posters
-  promocionales de la cartelera.
-- **Timeline de shows** (MB, bailarinas, Zonder, Apocalipto & King Ryan, DJ, lucha de brazo).
-- **Formularios** (inscripción y patrocinio) llegan por correo (Resend) al Gmail del dueño.
+- **UFP 7**: 5 de diciembre de 2026, 7:00 p. m., Gimnasio Jumper Fit, Cra. 10 #16-32, barrio Antonio Ricaurte, Granada, Meta.
+- **11 combates** según `cartelera.jpeg`, incluyendo Leo Wi vs. Morroco por título nacional y el encuentro MMA 2 vs. 2 de 66 kg.
+- **8 flyers asociados**: se muestran con el pie anterior recortado visualmente. Los archivos originales se conservan; la cartelera definitiva prevalece sobre nombres, sede y horarios de flyers anteriores.
+- **Boletas**: General $30.000, VIP $50.000 y Palco $100.000 COP. Sin capacidades ni beneficios adicionales confirmados.
+- **UFP 6** se conserva en `/evento/ufp-6`, sin venta activa ni resultados inventados.
+- **14 aliados** conservados, con vitrina propia y tres paquetes digitales con precios de lanzamiento. Ninguna marca tiene una categoría comercial asignada todavía.
+- **Formularios**: continúan con la entrega por correo existente; el paquete de patrocinio se preselecciona desde su CTA.
 
----
+## 1. Pendientes de contenido
 
-## 1. Datos del evento por confirmar (menores)
-
-| Qué | Cómo está hoy |
-| --- | --- |
-| **Dirección exacta del Monasterio Club** | Solo dice "Granada, Meta". |
-| **Disciplina del co-estelar** (Ramírez vs Psicópata) | Asumida MMA — confirmar. |
-| **Peso de la estelar** | No se muestra (solo "Título Nacional"). |
-| **Lozano vs Cardoso** | Llegó con póster pero no está en el cronograma: falta puesto en la cartelera, peso y hora. Hoy va de última, como preliminar de MMA y sin peso ni hora. |
-| Opcional | Capacidad del lugar, asaltos por pelea, si hay transmisión. |
+- Logos, descripciones y destinos oficiales de cada patrocinador. No se buscan ni se inventan perfiles.
+- Flyer de la estelar y de los otros dos cruces sin pieza individual. Se presentan con texto.
+- “La Mole vs. La Bala Palacios” queda fuera: no aparece en la cartelera definitiva.
+- Opcionales: capacidad del recinto, asaltos, horarios individuales, transmisión y beneficios por zona. Hoy se omiten.
+- Resultados reales de UFP 6 y de futuras ediciones. El archivo puede publicarse sin resultados.
 
 ## 2. Secciones apagadas (encender cuando haya contenido real)
 
@@ -47,7 +41,7 @@ resultado, método, asalto, fecha, evento). También confirmar las 6 divisiones 
 **Rankings** — dependen del roster: campeones por división y defensas, top 10 de retadores,
 libra por libra, y fecha de actualización.
 
-**Resultados** — los 3 eventos pasados son inventados: por cada uno real, número, nombre,
+**Resultados** — UFP 3, 4 y 5 siguen como ejemplos con `published: false`. Para registrar resultados reales: por cada uno real, número, nombre,
 fecha, sede y resultados con método y asalto.
 
 ## 3. Correo de marca `contacto@ufpcombat.com`

@@ -35,7 +35,11 @@ export async function TicketGrid({ tickets, eventName }: TicketGridProps) {
           <span className="font-display text-[40px] text-cream">
             {formatPrice(tier.price, locale)}
           </span>
-          <span className="text-sm leading-normal text-cream/60">{L(tier.perks, locale)}</span>
+          {tier.perks ? (
+            <span className="text-sm leading-normal text-cream/60">
+              {L(tier.perks, locale)}
+            </span>
+          ) : null}
           <a
             href={whatsappLink(
               t("buyMessage", {

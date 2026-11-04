@@ -22,7 +22,8 @@
     "tickets": "Tickets",
     "home": "Home",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "sponsors": "Partners"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -57,7 +58,8 @@
       "title": "Tickets",
       "titleAccent": "/ Boletos",
       "buy": "Buy via WhatsApp",
-      "buyMessage": "Hi! I'd like to buy tickets for {event} — {zone} zone ({price}). Can you help?"
+      "buyMessage": "Hi! I'd like to buy tickets for {event} — {zone} zone ({price}). Can you help?",
+      "officialCard": "Official {event} fight card"
     },
     "fighters": {
       "title": "Fighters",
@@ -81,9 +83,9 @@
       "viewAllLink": "View full shop →"
     },
     "sponsors": {
-      "title": "Sponsors",
-      "pitch": "Your brand in front of thousands at the event and across social. Packages from ring branding to event naming rights. / Tu marca en el octágono.",
-      "kitCta": "Sponsorship kit"
+      "title": "Brands behind UFP",
+      "pitch": "Be part of the UFP experience. Give your brand a dedicated place beside the fight card and a direct path for fans to discover your business.",
+      "kitCta": "Explore placements"
     },
     "apply": {
       "title": "Think you can",
@@ -111,7 +113,7 @@
   },
   "eventPage": {
     "daysRemaining": "{days} days to go",
-    "championship": "World championship",
+    "championship": "Title fight",
     "finished": "Event finished",
     "fullCard": "Full fight card",
     "fightsCount": "{count} fights",
@@ -220,23 +222,51 @@
     "errorBody": "Check the highlighted fields — the record must be n-n-n and the email valid."
   },
   "sponsorsPage": {
-    "title": "Sponsor",
-    "titleAccent": "the fight",
-    "kicker": "UFP Partnerships",
-    "pitch": "Every UFP event packs the room and travels far on social. Put your brand where nobody blinks.",
-    "tiersTitle": "Packages",
+    "title": "Your brand.",
+    "titleAccent": "Front row.",
+    "kicker": "UFP partnerships",
+    "pitch": "Be part of the UFP experience. Give your brand a dedicated place beside the fight card and a direct path for fans to discover your business.",
+    "tiersTitle": "Choose your presence",
     "perksLabel": "Includes",
-    "currentSponsors": "Brands already in the cage",
-    "formTitle": "Let's talk",
+    "currentSponsors": "Brands behind UFP",
+    "formTitle": "Choose your package and let’s talk",
     "company": "Company",
     "contactName": "Contact name",
     "email": "Corporate email",
     "tier": "Package of interest",
     "message": "Message (optional)",
-    "submit": "Request sponsorship kit",
+    "submit": "Ask about booking",
     "successTitle": "✓ Request received",
-    "successBody": "We'll send the sponsorship kit and a proposal to your email.",
-    "errorBody": "Check the highlighted fields."
+    "successBody": "We will review your request and contact you by email to arrange booking and campaign dates.",
+    "errorBody": "Check the highlighted fields.",
+    "partnersKicker": "Promotion partners",
+    "partnersBody": "Behind every matchup are brands supporting the sport. Meet the partners who stand with UFP.",
+    "joinPartners": "Your brand can be part of this story.",
+    "explorePackages": "Explore placements",
+    "partner": "UFP partner",
+    "mediaPartner": "Media partner",
+    "visitBrand": "Discover the brand",
+    "visitBrandNamed": "Discover {brand} (opens in a new tab)",
+    "featuredPartner": "Featured brand",
+    "presentedBy": "Presented by",
+    "quoteNote": "Launch prices · {days}-day campaigns",
+    "quoteLabel": "Launch price",
+    "digitalInventory": "Digital presence · Placements available to book",
+    "requestProposal": "Inquire about this package",
+    "whatsappCta": "Talk on WhatsApp",
+    "whatsappMessage": "Hello! I would like to book {tier} for {event} at {price} COP for {days} days on ufpcombat.com. Can you help with availability and dates?",
+    "physicalNote": "These prices cover placements on ufpcombat.com only. Social media posts, canvas branding, live mentions, tickets, hospitality and on-site activations are quoted separately.",
+    "formKicker": "Digital campaign prices · No online payment",
+    "submitting": "Sending…",
+    "discoverTitle": "Get discovered",
+    "discoverBody": "Your brand along the fan journey: the home page, event fight card and partner directory.",
+    "storyTitle": "Tell your story",
+    "storyBody": "A space for your identity, your offer and what makes your business special, using content confirmed by your brand.",
+    "connectTitle": "Start a conversation",
+    "connectBody": "Once you share your official destination, fans can go from discovering your brand to visiting your website or profile.",
+    "campaignPeriod": "COP / {days}-day campaign",
+    "campaignTerms": "One payment for {days} days of digital presence around the event. The start date is agreed when booking; there is no automatic renewal.",
+    "packageOption": "{tier} — {price} COP / {days} days"
   },
   "common": {
     "loading": "Loading",

@@ -1,3 +1,4 @@
+import { SponsorSpotlight } from "@/components/sponsor/SponsorSpotlight";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Locale, UFPEvent } from "@/data/types";
 import { formatEventDate, formatEventTime } from "@/lib/format";
@@ -40,18 +41,24 @@ export async function HeroSection({ event }: HeroSectionProps) {
         </OutlineText>
       </div>
 
-      <Reveal onScroll={false} className="relative flex flex-col items-center gap-[18px] px-6 py-16 text-center md:px-12">
+      <Reveal
+        onScroll={false}
+        className="relative flex flex-col items-center gap-[18px] px-6 py-16 text-center md:px-12"
+      >
         <div className="flex items-center gap-3.5 font-condensed text-[15px] uppercase tracking-[.34em] text-blood-hover">
           <span className="h-px w-11 bg-blood" />
           <span>{t("nextEvent")}</span>
           <span className="h-px w-11 bg-blood" />
         </div>
 
+        <SponsorSpotlight eventSlug={event.slug} presentation />
         <h1 className="animate-flicker font-display text-[min(11vw,150px)] uppercase leading-[.92] tracking-[.01em]">
           <span className="block text-cream">UFP {event.number}</span>
-          <span className="block text-blood [text-shadow:0_0_60px_rgba(193,18,31,.5)]">
-            {event.title}
-          </span>
+          {event.title ? (
+            <span className="block text-blood [text-shadow:0_0_60px_rgba(193,18,31,.5)]">
+              {event.title}
+            </span>
+          ) : null}
         </h1>
 
         <p className="font-condensed text-base uppercase tracking-[.2em] text-cream/70 md:text-xl">

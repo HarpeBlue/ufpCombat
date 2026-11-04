@@ -16,6 +16,7 @@ interface NavLink {
 }
 
 const primaryLinks: NavLink[] = [
+  { key: "sponsors", href: "/patrocinadores", feature: "sponsors" },
   { key: "event", href: "/#evento" },
   { key: "fightCard", href: "/#cartelera" },
   { key: "fighters", href: "/#peleadores", feature: "roster" },
@@ -28,8 +29,18 @@ const footerLinks: NavLink[] = [
   { key: "event", href: "/#evento" },
   { key: "fightCard", href: "/#cartelera" },
   { key: "shop", href: "/tienda", feature: "shop" },
-  { key: "signup", href: "/inscripcion", namespace: "footer", feature: "signup" },
-  { key: "sponsors", href: "/patrocinadores", namespace: "footer", feature: "sponsors" },
+  {
+    key: "signup",
+    href: "/inscripcion",
+    namespace: "footer",
+    feature: "signup",
+  },
+  {
+    key: "sponsors",
+    href: "/patrocinadores",
+    namespace: "footer",
+    feature: "sponsors",
+  },
 ];
 
 function live(links: NavLink[]): NavLink[] {

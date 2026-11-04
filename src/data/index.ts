@@ -2,6 +2,7 @@ import { formatEventDate } from "@/lib/format";
 import { divisions } from "./divisions";
 import { isEnabled } from "./features";
 import { events } from "./events";
+import { sponsorBrands } from "./sponsors";
 import { fighters } from "./fighters";
 import { divisionRankings } from "./rankings";
 import { tickerPhrases } from "./site";
@@ -29,11 +30,11 @@ export function getFighter(slug: string): Fighter | undefined {
 }
 
 export function getAllEvents(): UFPEvent[] {
-  return events;
+  return events.filter((event) => event.published);
 }
 
 export function getEvent(slug: string): UFPEvent | undefined {
-  return events.find((event) => event.slug === slug);
+  return getAllEvents().find((event) => event.slug === slug);
 }
 
 /**
@@ -43,29 +44,33 @@ export function getEvent(slug: string): UFPEvent | undefined {
  * event early (cancelled, or postponed with no new date).
  */
 export function isEventUpcoming(event: UFPEvent): boolean {
-  return event.status !== "past" && new Date(event.date).getTime() > Date.now();
+  return (
+    event.published &&
+    event.status !== "past" &&
+    new Date(event.date).getTime() > Date.now()
+  );
 }
 
 /** The next event (the soonest one among those that have not happened yet). */
 export function getUpcomingEvent(): UFPEvent | undefined {
-  return events
+  return getAllEvents()
     .filter(isEventUpcoming)
     .sort((a, b) => a.date.localeCompare(b.date))[0];
 }
 
 /** Events that already took place (or were archived by hand), newest first. */
 export function getPastEvents(): UFPEvent[] {
-  return events
+  return getAllEvents()
     .filter((event) => !isEventUpcoming(event))
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 /**
- * Events the site is allowed to show. With results switched off the archive is
- * hidden, so only what is still ahead remains browsable.
+ * Published event pages stay accessible after the event, independently of
+ * the results section. Unpublished examples never enter the public archive.
  */
 export function getBrowsableEvents(): UFPEvent[] {
-  return isEnabled("results") ? events : events.filter(isEventUpcoming);
+  return getAllEvents();
 }
 
 /** Most recent event held — the home page falls back to it when nothing is scheduled. */
@@ -109,9 +114,17 @@ export function getTickerMessages(locale: Locale): string[] {
     upcomingEvent.title,
     formatEventDate(upcomingEvent.date, locale),
     upcomingEvent.venue.name,
-  ].join(" · ");
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
-  return [announcement, ...tickerPhrases];
+  return [
+    announcement,
+    ...(upcomingEvent.tickets.length
+      ? [locale === "es" ? "Boletos a la venta" : "Tickets on sale"]
+      : []),
+    ...tickerPhrases,
+  ];
 }
 
 /** A corner resolved against the roster for rendering (record + profile link). */
@@ -161,4 +174,19 @@ export function getNextFightFor(
     }
   }
   return undefined;
+}
+
+/** Confirmed partners eligible for this event, with agreed premium placements first. */
+export function getSponsorBrands(eventSlug?: string) {
+  if (!isEnabled("sponsors")) return [];
+  const priority = { presenta: 0, destacada: 1, presencia: 2 };
+  return sponsorBrands
+    .filter(
+      (brand) =>
+        !eventSlug || !brand.eventSlugs || brand.eventSlugs.includes(eventSlug),
+    )
+    .sort(
+      (a, b) =>
+        priority[a.tierId ?? "presencia"] - priority[b.tierId ?? "presencia"],
+    );
 }

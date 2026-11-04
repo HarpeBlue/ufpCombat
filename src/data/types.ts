@@ -123,6 +123,8 @@ export interface Fight {
    * Used by the home fight-card grid; distinct from the per-fighter corner photo.
    */
   poster?: string;
+  /** Visible top portion of a poster; hides outdated venue/time artwork without altering the source. */
+  posterAspectRatio?: string;
   isTitleFight: boolean;
   red: FightCorner;
   blue: FightCorner;
@@ -141,7 +143,7 @@ export interface TicketTier {
   zone: string;
   price: number;
   currency: "COP";
-  perks: Localized;
+  perks?: Localized;
   featured?: boolean;
   soldOut?: boolean;
 }
@@ -168,7 +170,11 @@ export interface UFPEvent {
   slug: string;
   number: number;
   /** Brand subtitle, e.g. "Sangre Nueva" — not localized. */
-  title: string;
+  title?: string;
+  /** Only confirmed, public events may be selected or accessed by URL. */
+  published: boolean;
+  /** Official full-card artwork, separate from an individual bout poster. */
+  poster?: string;
   status: EventStatus;
   /** ISO string with a time zone offset — the countdown target. */
   date: string;
@@ -225,17 +231,31 @@ export interface Product {
   image?: string;
 }
 
-/** A brand actually sponsoring the promotion, as listed on the event poster. */
+/** Digital placement levels, assigned only after a commercial agreement. */
+export type SponsorTierId = "presencia" | "destacada" | "presenta";
+
+/** A confirmed partner of the promotion. */
 export interface SponsorBrand {
+  id: string;
   name: string;
-  /** venue = hosts the event, media = broadcast/press partner, official = everyone else. */
+  description?: Localized;
+  /** Confirmed official HTTPS destination. */
+  url?: string;
+  /** Set only after the placement has been agreed with the brand. */
+  tierId?: SponsorTierId;
+  /** Omit for promotion-wide partners; otherwise restrict to these event slugs. */
+  eventSlugs?: string[];
+  /** venue = venue partner (not necessarily the current host), media = press partner. */
   kind: "venue" | "official" | "media";
   /** Path under /public. Missing ⇒ the grid renders the name instead. */
   logo?: string;
 }
 
 export interface SponsorTier {
-  id: string;
+  id: SponsorTierId;
+  /** Fixed campaign price in COP; duration is shared in sponsors.ts. */
+  price: number;
+  example: Localized;
   name: Localized;
   pitch: Localized;
   perks: Localized[];

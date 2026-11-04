@@ -4,25 +4,34 @@ import { useActionState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import type { FormActionState } from "@/actions/apply";
 import { submitSponsorContact } from "@/actions/sponsor";
-import { sponsorTiers } from "@/data/sponsors";
-import type { Locale } from "@/data/types";
+import { sponsorCampaign, sponsorTiers } from "@/data/sponsors";
+import type { Locale, SponsorTierId } from "@/data/types";
+import { formatPrice } from "@/lib/format";
 import { L } from "@/lib/localize";
 import { fieldClasses, labelClasses, submitClasses } from "./formStyles";
 
 /** Sponsor contact form (/patrocinadores). */
-export function SponsorForm() {
+export function SponsorForm({
+  initialTierId,
+}: {
+  initialTierId?: SponsorTierId;
+}) {
   const t = useTranslations("sponsorsPage");
   const locale = useLocale() as Locale;
-  const [state, formAction, isPending] = useActionState<FormActionState, FormData>(
-    submitSponsorContact,
-    { status: "idle" },
-  );
+  const [state, formAction, isPending] = useActionState<
+    FormActionState,
+    FormData
+  >(submitSponsorContact, { status: "idle" });
 
   if (state.status === "success") {
     return (
       <div className="flex flex-col gap-3 border border-win/50 bg-surface p-8 text-center">
-        <span className="font-display text-3xl uppercase text-win">{t("successTitle")}</span>
-        <p className="text-[15px] leading-relaxed text-cream/65">{t("successBody")}</p>
+        <span className="font-display text-3xl uppercase text-win">
+          {t("successTitle")}
+        </span>
+        <p className="text-[15px] leading-relaxed text-cream/65">
+          {t("successBody")}
+        </p>
       </div>
     );
   }
@@ -50,10 +59,19 @@ export function SponsorForm() {
         </label>
         <label className="flex flex-col gap-1.5">
           <span className={labelClasses}>{t("tier")}</span>
-          <select name="tierId" required className={fieldClasses}>
+          <select
+            name="tierId"
+            required
+            defaultValue={initialTierId ?? sponsorTiers[0].id}
+            className={fieldClasses}
+          >
             {sponsorTiers.map((tier) => (
               <option key={tier.id} value={tier.id}>
-                {L(tier.name, locale)}
+                {t("packageOption", {
+                  tier: L(tier.name, locale),
+                  price: formatPrice(tier.price, locale),
+                  days: sponsorCampaign.durationDays,
+                })}
               </option>
             ))}
           </select>
@@ -66,7 +84,7 @@ export function SponsorForm() {
       </label>
 
       <button type="submit" disabled={isPending} className={submitClasses}>
-        {t("submit")}
+        {isPending ? t("submitting") : t("submit")}
       </button>
     </form>
   );

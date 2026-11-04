@@ -86,11 +86,288 @@ const ufp6Tickets: TicketTier[] = [
 
 /** UFP events. Adding a new event = adding one object here. */
 export const events: UFPEvent[] = [
+  // UFP 7: confirmed full card and ticket artwork supplied by the organizer.
+  {
+    slug: "ufp-7",
+    number: 7,
+    published: true,
+    poster: "/events/ufp-7-cartelera.jpg",
+    status: "upcoming",
+    date: "2026-12-05T19:00:00-05:00",
+    venue: {
+      name: "Gimnasio Jumper Fit",
+      address: {
+        es: "Cra. 10 #16-32, barrio Antonio Ricaurte, Granada, Meta.",
+        en: "Cra. 10 #16-32, Antonio Ricaurte neighborhood, Granada, Meta, Colombia.",
+      },
+      doorsOpen: "19:00",
+    },
+    schedule: [],
+    fights: [
+      {
+        id: "ufp7-leo-wi-morroco",
+        order: 0,
+        label: {
+          es: "Estelar · Título",
+          en: "Main event · Title",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · Título Nacional",
+          en: "MMA · National Title",
+        },
+        isTitleFight: true,
+        red: {
+          name: "Leo Wi",
+        },
+        blue: {
+          name: "Morroco",
+        },
+      },
+      {
+        id: "ufp7-psicopata-balboa",
+        order: 1,
+        label: {
+          es: "Estelar",
+          en: "Main card",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · 83 kg",
+          en: "MMA · 83 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Psicópata",
+        },
+        blue: {
+          name: "El Caballo Balboa",
+        },
+        poster: "/fights/ufp-7/psicopata-balboa.jpg",
+        posterAspectRatio: "1016 / 1280",
+      },
+      {
+        id: "ufp7-medina-hernandez-baki-duarte",
+        order: 2,
+        label: {
+          es: "Estelar",
+          en: "Main card",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · 2 vs. 2 · 66 kg",
+          en: "MMA · 2 vs. 2 · 66 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Medina y Hernández",
+        },
+        blue: {
+          name: "Baki y Duarte",
+        },
+        poster: "/fights/ufp-7/medina-hernandez-baki-duarte.jpg",
+        posterAspectRatio: "1017 / 1190",
+      },
+      {
+        id: "ufp7-pikachu-stuart",
+        order: 3,
+        label: {
+          es: "Co-estelar",
+          en: "Co-main card",
+        },
+        discipline: "boxing",
+        divisionLabel: {
+          es: "Boxeo · +90 kg",
+          en: "Boxing · +90 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Pikachu",
+        },
+        blue: {
+          name: "Stuart",
+        },
+      },
+      {
+        id: "ufp7-muneton-sherman",
+        order: 4,
+        label: {
+          es: "Co-estelar",
+          en: "Co-main card",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · 60 kg",
+          en: "MMA · 60 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Duberney Aguirre “Muñetón el Jaguar”",
+        },
+        blue: {
+          name: "Sherman Andres Chivata",
+        },
+        poster: "/fights/ufp-7/muneton-sherman.jpg",
+        posterAspectRatio: "1028 / 1300",
+      },
+      {
+        id: "ufp7-yandri-ximena",
+        order: 5,
+        label: {
+          es: "Co-estelar",
+          en: "Co-main card",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · Pelea pactada",
+          en: "MMA · Agreed bout",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Yandri",
+        },
+        blue: {
+          name: "Ximena",
+        },
+        poster: "/fights/ufp-7/yandri-ximena.jpg",
+        posterAspectRatio: "1078 / 1300",
+      },
+      {
+        id: "ufp7-pantera-navarrete",
+        order: 6,
+        label: {
+          es: "Preliminar",
+          en: "Prelim",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · 77 kg",
+          en: "MMA · 77 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Manjares Pantera",
+        },
+        blue: {
+          name: "Josué “El Fénix” Navarrete",
+        },
+        poster: "/fights/ufp-7/pantera-navarrete.jpg",
+        posterAspectRatio: "1024 / 1260",
+      },
+      {
+        id: "ufp7-pajoy-lider",
+        order: 7,
+        label: {
+          es: "Preliminar",
+          en: "Prelim",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · 70 kg",
+          en: "MMA · 70 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Pajoy",
+        },
+        blue: {
+          name: "El Líder",
+        },
+        poster: "/fights/ufp-7/pajoy-lider.jpg",
+        posterAspectRatio: "946 / 1070",
+      },
+      {
+        id: "ufp7-orobio-buritica",
+        order: 8,
+        label: {
+          es: "Preliminar",
+          en: "Prelim",
+        },
+        discipline: "boxing",
+        divisionLabel: {
+          es: "Boxeo · 83 kg",
+          en: "Boxing · 83 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Andrés Orobio",
+        },
+        blue: {
+          name: "Diego Alejandro Buriticá",
+        },
+        poster: "/fights/ufp-7/orobio-buritica.jpg",
+        posterAspectRatio: "1024 / 960",
+      },
+      {
+        id: "ufp7-zuluaga-sebastian",
+        order: 9,
+        label: {
+          es: "Preliminar",
+          en: "Prelim",
+        },
+        discipline: "mma",
+        divisionLabel: {
+          es: "MMA · 63 kg",
+          en: "MMA · 63 kg",
+        },
+        isTitleFight: false,
+        red: {
+          name: "Zuluaga",
+        },
+        blue: {
+          name: "Sebastián",
+        },
+      },
+      {
+        id: "ufp7-chamo-nunez",
+        order: 10,
+        label: {
+          es: "Preliminar",
+          en: "Prelim",
+        },
+        discipline: "boxing",
+        divisionLabel: {
+          es: "Boxeo",
+          en: "Boxing",
+        },
+        isTitleFight: false,
+        red: {
+          name: "El Chamo",
+        },
+        blue: {
+          name: "Núñez",
+        },
+        poster: "/fights/ufp-7/chamo-nunez.jpg",
+        posterAspectRatio: "956 / 1100",
+      },
+    ],
+    tickets: [
+      {
+        id: "general",
+        zone: "General",
+        price: 30000,
+        currency: "COP",
+      },
+      {
+        id: "vip",
+        zone: "VIP",
+        price: 50000,
+        currency: "COP",
+      },
+      {
+        id: "palco",
+        zone: "Palco",
+        price: 100000,
+        currency: "COP",
+      },
+    ],
+  },
   {
     slug: "ufp-6",
     number: 6,
+    published: true,
     title: "Champions",
-    status: "upcoming",
+    status: "past",
     date: "2026-08-07T20:00:00-05:00",
     venue: monasterioClub,
     // Entertainment timeline from the official run-of-show. The bouts (with
@@ -98,12 +375,27 @@ export const events: UFPEvent[] = [
     // blocks so times aren't duplicated across the two.
     schedule: [
       { time: "20:40", label: { es: "Lucha de brazo", en: "Arm wrestling" } },
-      { time: "23:10", label: { es: "MB · Invitado especial", en: "MB · Special guest" } },
-      { time: "23:20", label: { es: "MB con bailarinas", en: "MB with dancers" } },
+      {
+        time: "23:10",
+        label: { es: "MB · Invitado especial", en: "MB · Special guest" },
+      },
+      {
+        time: "23:20",
+        label: { es: "MB con bailarinas", en: "MB with dancers" },
+      },
       { time: "23:30", label: { es: "Zonder", en: "Zonder" } },
-      { time: "23:45", label: { es: "Apocalipto & King Ryan", en: "Apocalipto & King Ryan" } },
-      { time: "00:00", label: { es: "DJ · Lucha de brazo", en: "DJ · Arm wrestling" } },
-      { time: "02:10", label: { es: "Show de bailarinas", en: "Dancers show" } },
+      {
+        time: "23:45",
+        label: { es: "Apocalipto & King Ryan", en: "Apocalipto & King Ryan" },
+      },
+      {
+        time: "00:00",
+        label: { es: "DJ · Lucha de brazo", en: "DJ · Arm wrestling" },
+      },
+      {
+        time: "02:10",
+        label: { es: "Show de bailarinas", en: "Dancers show" },
+      },
       { time: "02:30", label: { es: "MB", en: "MB" } },
       { time: "02:45", label: { es: "DJ", en: "DJ" } },
     ],
@@ -120,7 +412,10 @@ export const events: UFPEvent[] = [
         order: 0,
         label: { es: "Estelar · Título", en: "Main event · Title" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Título Nacional", en: "MMA · National Title" },
+        divisionLabel: {
+          es: "MMA · Título Nacional",
+          en: "MMA · National Title",
+        },
         time: "03:30",
         poster: "/fights/leo-vs-bravo.jpg",
         isTitleFight: true,
@@ -244,6 +539,7 @@ export const events: UFPEvent[] = [
   {
     slug: "ufp-5",
     number: 5,
+    published: false,
     title: "Juicio Final",
     status: "past",
     date: "2026-05-23T20:00:00-05:00",
@@ -255,7 +551,10 @@ export const events: UFPEvent[] = [
         order: 0,
         label: { es: "Estelar · Título", en: "Main event · Title" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Wélter · 5R", en: "MMA · Welterweight · 5R" },
+        divisionLabel: {
+          es: "MMA · Wélter · 5R",
+          en: "MMA · Welterweight · 5R",
+        },
         rounds: 5,
         isTitleFight: true,
         red: {
@@ -280,7 +579,10 @@ export const events: UFPEvent[] = [
         order: 1,
         label: { es: "Co-estelar", en: "Co-main" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Ligero · 3R", en: "MMA · Lightweight · 3R" },
+        divisionLabel: {
+          es: "MMA · Ligero · 3R",
+          en: "MMA · Lightweight · 3R",
+        },
         rounds: 3,
         isTitleFight: false,
         red: { slug: "adrian-vega", name: '"La Pantera" Vega' },
@@ -300,7 +602,10 @@ export const events: UFPEvent[] = [
         order: 2,
         label: { es: "Boxeo 10R", en: "Boxing 10R" },
         discipline: "boxing",
-        divisionLabel: { es: "Boxeo · Mediano · 10R", en: "Boxing · Middleweight · 10R" },
+        divisionLabel: {
+          es: "Boxeo · Mediano · 10R",
+          en: "Boxing · Middleweight · 10R",
+        },
         rounds: 10,
         isTitleFight: false,
         red: { slug: "tyrone-bell", name: "Tyrone Bell" },
@@ -319,7 +624,10 @@ export const events: UFPEvent[] = [
         order: 3,
         label: { es: "Preliminar", en: "Prelim" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Pluma · 3R", en: "MMA · Featherweight · 3R" },
+        divisionLabel: {
+          es: "MMA · Pluma · 3R",
+          en: "MMA · Featherweight · 3R",
+        },
         rounds: 3,
         isTitleFight: false,
         red: { slug: "bruno-salazar", name: "Bruno Salazar" },
@@ -339,7 +647,10 @@ export const events: UFPEvent[] = [
         order: 4,
         label: { es: "Apertura", en: "Opener" },
         discipline: "boxing",
-        divisionLabel: { es: "Boxeo · Wélter · 8R", en: "Boxing · Welterweight · 8R" },
+        divisionLabel: {
+          es: "Boxeo · Wélter · 8R",
+          en: "Boxing · Welterweight · 8R",
+        },
         rounds: 8,
         isTitleFight: false,
         red: { slug: "luca-moretti", name: "Luca Moretti" },
@@ -367,6 +678,7 @@ export const events: UFPEvent[] = [
   {
     slug: "ufp-4",
     number: 4,
+    published: false,
     title: "Territorio",
     status: "past",
     date: "2026-03-14T20:00:00-05:00",
@@ -378,7 +690,10 @@ export const events: UFPEvent[] = [
         order: 0,
         label: { es: "Estelar", en: "Main event" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Paja Fem. · 5R", en: "MMA · W. Strawweight · 5R" },
+        divisionLabel: {
+          es: "MMA · Paja Fem. · 5R",
+          en: "MMA · W. Strawweight · 5R",
+        },
         rounds: 5,
         isTitleFight: false,
         red: { slug: "sofia-mendoza", name: 'Sofía "Reina" Mendoza' },
@@ -397,7 +712,10 @@ export const events: UFPEvent[] = [
         order: 1,
         label: { es: "Co-estelar", en: "Co-main" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Wélter · 3R", en: "MMA · Welterweight · 3R" },
+        divisionLabel: {
+          es: "MMA · Wélter · 3R",
+          en: "MMA · Welterweight · 3R",
+        },
         rounds: 3,
         isTitleFight: false,
         red: { slug: "dmitri-volkov", name: 'Dmitri "Iron" Volkov' },
@@ -416,7 +734,10 @@ export const events: UFPEvent[] = [
         order: 2,
         label: { es: "Boxeo 8R", en: "Boxing 8R" },
         discipline: "boxing",
-        divisionLabel: { es: "Boxeo · Wélter · 8R", en: "Boxing · Welterweight · 8R" },
+        divisionLabel: {
+          es: "Boxeo · Wélter · 8R",
+          en: "Boxing · Welterweight · 8R",
+        },
         rounds: 8,
         isTitleFight: false,
         red: { slug: "diego-paz", name: 'Diego "El Toro" Paz' },
@@ -444,6 +765,7 @@ export const events: UFPEvent[] = [
   {
     slug: "ufp-3",
     number: 3,
+    published: false,
     title: "Fuego Cruzado",
     status: "past",
     date: "2026-01-17T20:00:00-05:00",
@@ -455,7 +777,10 @@ export const events: UFPEvent[] = [
         order: 0,
         label: { es: "Estelar · Título", en: "Main event · Title" },
         discipline: "boxing",
-        divisionLabel: { es: "Boxeo · Mediano · 12R", en: "Boxing · Middleweight · 12R" },
+        divisionLabel: {
+          es: "Boxeo · Mediano · 12R",
+          en: "Boxing · Middleweight · 12R",
+        },
         rounds: 12,
         isTitleFight: true,
         red: {
@@ -479,7 +804,10 @@ export const events: UFPEvent[] = [
         order: 1,
         label: { es: "Co-estelar", en: "Co-main" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Wélter · 3R", en: "MMA · Welterweight · 3R" },
+        divisionLabel: {
+          es: "MMA · Wélter · 3R",
+          en: "MMA · Welterweight · 3R",
+        },
         rounds: 3,
         isTitleFight: false,
         red: { slug: "marco-rios", name: '"El Verdugo" Marco Ríos' },
@@ -499,14 +827,20 @@ export const events: UFPEvent[] = [
         order: 2,
         label: { es: "Preliminar", en: "Prelim" },
         discipline: "mma",
-        divisionLabel: { es: "MMA · Paja Fem. · 3R", en: "MMA · W. Strawweight · 3R" },
+        divisionLabel: {
+          es: "MMA · Paja Fem. · 3R",
+          en: "MMA · W. Strawweight · 3R",
+        },
         rounds: 3,
         isTitleFight: false,
         red: { slug: "anna-kovacs", name: "Anna Kovács" },
         blue: { name: "Marta Silva", recordText: "7-4-0" },
         result: {
           winner: "red",
-          method: { es: "Sumisión — mataleón", en: "Submission — rear-naked choke" },
+          method: {
+            es: "Sumisión — mataleón",
+            en: "Submission — rear-naked choke",
+          },
           round: 2,
           summary: {
             es: "Kovács somete a Silva — mataleón, R2",

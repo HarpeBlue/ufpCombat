@@ -1,14 +1,22 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { getBrowsableEvents, getEvent, getMainFight, isEventUpcoming } from "@/data";
+import {
+  getBrowsableEvents,
+  getEvent,
+  getMainFight,
+  isEventUpcoming,
+} from "@/data";
 import type { Locale } from "@/data/types";
 import { site } from "@/data/site";
 import { formatEventDate, formatEventName } from "@/lib/format";
 import { L } from "@/lib/localize";
 import { localizedAlternates } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SponsorsSection } from "@/components/sponsor/SponsorsSection";
+import { SponsorSpotlight } from "@/components/sponsor/SponsorSpotlight";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -31,7 +39,9 @@ export function generateStaticParams() {
   );
 }
 
-export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: EventPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const event = getEvent(slug);
   if (!event) return {};
@@ -40,7 +50,9 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
   const description = mainFight
     ? [
         `${mainFight.red.name} vs ${mainFight.blue.name}`,
-        mainFight.divisionLabel ? L(mainFight.divisionLabel, locale as Locale) : null,
+        mainFight.divisionLabel
+          ? L(mainFight.divisionLabel, locale as Locale)
+          : null,
         event.venue.name,
       ]
         .filter(Boolean)
@@ -48,7 +60,7 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
     : event.venue.name;
 
   return {
-    title: `UFP ${event.number}: ${event.title} · ${formatEventDate(event.date, locale as Locale)}`,
+    title: `${formatEventName(event)} · ${formatEventDate(event.date, locale as Locale)}`,
     description,
     alternates: localizedAlternates(`/evento/${event.slug}`, locale),
   };
@@ -74,7 +86,7 @@ function eventJsonLd(event: NonNullable<ReturnType<typeof getEvent>>) {
   return {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
-    name: `UFP ${event.number}: ${event.title}`,
+    name: formatEventName(event),
     sport: "Mixed Martial Arts / Boxing",
     startDate: event.date,
     endDate: eventEndDate(event.date),
@@ -84,7 +96,11 @@ function eventJsonLd(event: NonNullable<ReturnType<typeof getEvent>>) {
       name: event.venue.name,
       address: event.venue.address.es,
     },
-    organizer: { "@type": "Organization", name: site.fullName, url: site.domain },
+    organizer: {
+      "@type": "Organization",
+      name: site.fullName,
+      url: site.domain,
+    },
     ...(isUpcoming && event.tickets.length > 0
       ? {
           offers: event.tickets.map((tier) => ({
@@ -120,12 +136,39 @@ export default async function EventPage({ params }: EventPageProps) {
         <EventHero event={event} />
         <ScheduleBand schedule={event.schedule} />
 
+        {event.poster ? (
+          <Section width="md">
+            <Image
+              src={event.poster}
+              alt={tTickets("officialCard", { event: formatEventName(event) })}
+              width={1024}
+              height={1536}
+              sizes="(max-width: 768px) 100vw, 640px"
+              className="mx-auto h-auto w-full max-w-[640px] border border-blood/35"
+            />
+          </Section>
+        ) : null}
         <FullFightCard event={event} />
+        <div className="mx-auto max-w-[1200px] px-6 md:px-12">
+          <SponsorSpotlight eventSlug={event.slug} />
+        </div>
+        <SponsorsSection eventSlug={event.slug} />
 
         {isUpcoming && event.tickets.length > 0 ? (
-          <Section id="boletos" background="ticket-gradient" width="md" borderTop>
-            <SectionHeading title={tTickets("title")} titleAccent={tTickets("titleAccent")} />
-            <TicketGrid tickets={event.tickets} eventName={formatEventName(event)} />
+          <Section
+            id="boletos"
+            background="ticket-gradient"
+            width="md"
+            borderTop
+          >
+            <SectionHeading
+              title={tTickets("title")}
+              titleAccent={tTickets("titleAccent")}
+            />
+            <TicketGrid
+              tickets={event.tickets}
+              eventName={formatEventName(event)}
+            />
           </Section>
         ) : null}
 
